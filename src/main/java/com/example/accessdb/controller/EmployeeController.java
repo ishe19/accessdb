@@ -1,10 +1,13 @@
-package com.example.accessdb;
+package com.example.accessdb.controller;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.validation.Valid;
 
+import com.example.accessdb.model.Employee;
+import com.example.accessdb.repository.EmployeeRepository;
+import com.example.accessdb.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +19,12 @@ public class EmployeeController {
     private EmployeeRepository employeeRepository;
 
     @GetMapping("/employees")
-    public List < Employee > getAllEmployees(){
+    public List <Employee> getAllEmployees(){
         return employeeRepository.findAll();
     }
 
     @GetMapping("/employees/{id}")
-    public ResponseEntity <Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId) throws ResourceNotFoundException   {
+    public ResponseEntity <Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId) throws ResourceNotFoundException {
         Employee employee = employeeRepository.findById(employeeId)
             .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
         return ResponseEntity.ok().body(employee);

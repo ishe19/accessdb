@@ -1,5 +1,6 @@
-package com.example.accessdb;
+package com.example.accessdb.repository;
 
+import com.example.accessdb.model.Employee;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,4 +1,4 @@
-package com.example.accessdb;
+package com.example.accessdb.exceptions;
 
 import java.util.Date;
 
